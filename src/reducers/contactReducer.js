@@ -14,7 +14,6 @@ const contactReducer = (state = initialState, action) => {
         id: state.contacts.length + 1,
         ...action.payload,
       };
-      console.log('ADD_CONTACT',newContact);
       return {
         ...state,
         contacts: [...state.contacts, newContact],
@@ -35,15 +34,16 @@ const contactReducer = (state = initialState, action) => {
       };
 
     case 'UPDATE_CONTACT':
-      const updatedContact = {
-        ...state.contacts.find(contact => contact.id === action.payload),
-        name: 'Updated Name',
-      };
-      const updatedContactsList = state.contacts.map(contact => (contact.id === action.payload ? updatedContact : contact));
-      return {
-        ...state,
-        contacts: updatedContactsList,
-      };
+      const { index, updatedContact } = action.payload;
+      const updatedContactss = state.contacts.map(contact => {
+
+        if (contact.id === index) {
+
+          return { ...contact, ...action.payload.updatedContact };
+        }
+      return contact;
+      });
+      return { ...state, contacts: updatedContactss };
 
     default:
       return state;

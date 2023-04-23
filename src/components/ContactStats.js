@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux';
 
 function ContactStats() {
   const contacts = useSelector(state => state.contacts);
-  console.log('check contacts', contacts);
 
   return (
     <>
-      <p>Total Contacts: {contacts.totalCount}</p>
+      <p style={{ color: 'red', fontSize : 18, textAlign: 'center' }}>Total Contacts: {contacts.totalCount}</p>
 
       <div className='contactStats-container'>
         <div className='contactStats-gender-count'>
