@@ -14,10 +14,10 @@ export const deleteContact = (id) => {
   }
 }
 
-export const updateContact = (id) => {
+export const updateContact = (contact) => {
   console.log('im from updateContact');
   return {
     type: 'UPDATE_CONTACT',
-    payload: id
+    payload: contact
   }
 }
