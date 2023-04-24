@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, updateContact } from '../actions/contactActions';
+import { deleteContact } from '../actions/contactActions';
 import UpdateContactForm from './UpdateContactForm';
 
 
