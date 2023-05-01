@@ -7,7 +7,7 @@ import UpdateContactForm from './UpdateContactForm';
 const ContactList = () => {
   const [contactUpdate, setContactUpdate] = useState(null);
 
-  const contacts = useSelector(state => state.contacts);
+  const contactList = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
@@ -21,7 +21,7 @@ const ContactList = () => {
   return (
     <div className='contactList-container'>
       <h2>Contact List</h2>
-      {contacts.contacts.map((contact)=> (
+      {contactList.contacts.map((contact)=> (
         <div key={contact.id} className='contactList-card'>
           <p> <span className='contactList-card-label'>Name:</span> {contact.name}</p>
           <p> <span className='contactList-card-label'>Email:</span> {contact.email}</p>

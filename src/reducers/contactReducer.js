@@ -36,14 +36,28 @@ const contactReducer = (state = initialState, action) => {
     case 'UPDATE_CONTACT':
       const { index, updatedContact } = action.payload;
       const updatedContactss = state.contacts.map(contact => {
-
         if (contact.id === index) {
-
           return { ...contact, ...action.payload.updatedContact };
         }
       return contact;
       });
-      return { ...state, contacts: updatedContactss };
+
+      const maleCount = updatedContactss.filter(
+        (contact) => contact.gender === 'Male'
+      ).length;
+      const femaleCount = updatedContactss.length - maleCount;
+
+      
+      const personalCount = updatedContactss.filter(
+        (contact) => contact.type === 'Personal'
+      ).length;
+      const businessCount = updatedContactss.length - personalCount;
+      return { ...state, contacts: updatedContactss, 
+        femaleCount: femaleCount, 
+        maleCount: maleCount, 
+        personalCount: personalCount, 
+        businessCount:businessCount 
+      };
 
     default:
       return state;
